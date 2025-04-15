@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index ce36b4b..fd193c3 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -20,7 +20,7 @@ objs = buffer.o carg_parser.o global.o io.o main.o main_loop.o regex.o signal.o
+ all : $(progname) r$(progname)
+ 
+ $(progname) : $(objs)
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(objs)
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(objs) $(LIBS)
+ 
+ r$(progname) : r$(progname).in
+ 	cat $(VPATH)/r$(progname).in > $@
