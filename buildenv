@@ -1,5 +1,5 @@
 # Update bump details accordingly. Use bump check to confirm.
-# bump: ed-version /ED_VERSION="(.*)"/ https://ftp.gnu.org/gnu/ed/ed-1.21.tar.lz|semver:*
+# bump: ed-version /ED_VERSION="(.*)"/ https://ftp.gnu.org/gnu/ed/ed-([\d.]+).tar.lz|semver:*
 ED_VERSION="1.21" # Specify a stable release
 export ZOPEN_STABLE_TAG="v${ED_VERSION}"
 
