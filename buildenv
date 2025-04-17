@@ -1,7 +1,8 @@
 # Update bump details accordingly. Use bump check to confirm.
-# bump: ed-version /ED_VERSION="(.*)"/ https://ftp.gnu.org/gnu/ed/ed-1.21.tar.lz|semver:*
-# ED_VERSION="V.R.M" # Specify a stable release
-# export ZOPEN_STABLE_TAG="v${ED_VERSION}"
+# bump: ed-version /ED_VERSION="(.*)"/ https://ftp.gnu.org/gnu/ed/|re:/href="ed-([\d.]+).tar.lz"/$1/|semver:*
+
+ED_VERSION="1.21.1" # Specify a stable release
+export ZOPEN_STABLE_TAG="v${ED_VERSION}"
 
 ###
 ### Build control file for the ed port
@@ -15,7 +16,7 @@
 export ZOPEN_BUILD_LINE="STABLE"
 
 ## Required IF ZOPEN_BUILD_LINE='STABLE'
-export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/ed/ed-1.21.tar.lz"  # Specify the stable build URL (either git or tarball)
+export ZOPEN_STABLE_URL="https://ftp.gnu.org/gnu/ed/ed-${ED_VERSION}.tar.lz"  # Specify the stable build URL (either git or tarball)
 export ZOPEN_STABLE_DEPS="zoslib lzip tar make coreutils" # Specify the stable build dependencies.
 
 ## Required IF ZOPEN_BUILD_LINE='DEV'
@@ -67,7 +68,7 @@ zopen_get_version()
 {
   # Modify to echo the version of your tool/library
   # Rather than hardcoding the version, obtain the version by running the tool/library
-  echo "1.0.0"
+  ./ed --version | head -1 | awk '{print $3; }'
 }
 
 
